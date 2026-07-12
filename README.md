@@ -6,9 +6,11 @@ The complete robot was developed by a team of seven Mechanical Engineering stude
 
 This repository focuses on the software and electronics portion of the project. The mechanical design, CAD development, manufacturing, and assembly process are presented separately in the project case study on my portfolio website.
 
-![Completed BattleBot](images/final-robot.jpg)
-
-*Completed tracked BattleBot developed for TMM4150 at NTNU.*
+<p align="center">
+  <img src="images/final-robot.jpg" alt="Completed BattleBot" width="600">
+  <br>
+  <em>Completed tracked BattleBot developed for TMM4150 at NTNU.</em>
+</p>
 
 ---
 
@@ -31,9 +33,11 @@ The implemented control system supports:
 
 ## Electronics
 
-![Integrated electronics](images/electronics-setup.jpg)
-
-*Integrated electronics setup containing the ESP32, L298N motor driver, voltage converter, protection circuit, and power connections.*
+<p align="center">
+  <img src="images/electronics-setup.jpg" alt="Integrated electronics setup" width="600">
+  <br>
+  <em>Integrated electronics setup containing the ESP32, L298N motor driver, voltage converter, protection circuit, and power connections.</em>
+</p>
 
 | Component | Function |
 |---|---|
@@ -52,9 +56,11 @@ The ESP32 was selected because it provides built-in Bluetooth communication and 
 
 ## Wiring
 
-![Wiring diagram](documentation/wiring-diagram.png)
-
-*Simplified wiring diagram showing the connections between the battery, protection circuit, voltage converter, ESP32, motor driver, and motors.*
+<p align="center">
+  <img src="documentation/wiring-diagram.png" alt="Wiring diagram" width="850">
+  <br>
+  <em>Simplified wiring diagram showing the connections between the battery, protection circuit, voltage converter, ESP32, motor driver, and motors.</em>
+</p>
 
 The diagram shows how the main electrical components were connected during the project.
 
@@ -64,9 +70,11 @@ The battery supplies the protection and sensing circuit. The voltage is then inc
 
 ## Protection and Voltage-Sensing PCB
 
-![Protection and voltage-sensing PCB](documentation/protection-pcb-layout.png)
-
-*PCB layout used for fuse integration, common ground distribution, external connections, and battery-voltage sensing.*
+<p align="center">
+  <img src="documentation/bms-pcb-layout.png" alt="Protection and voltage-sensing PCB layout" width="700">
+  <br>
+  <em>PCB layout used for fuse integration, common ground distribution, external connections, and battery-voltage sensing.</em>
+</p>
 
 The project included a custom PCB used as part of the battery protection and monitoring system.
 
@@ -94,9 +102,11 @@ The current software implementation reads and prints the raw ADC value. Conversi
 
 ## Control Flow
 
-![Software activity diagram](documentation/activity-diagram.png)
-
-*Activity diagram showing controller input handling, driving-mode selection, steering calculations, PWM limiting, and motor output.*
+<p align="center">
+  <img src="documentation/activity-diagram.png" alt="Software activity diagram" width="850">
+  <br>
+  <em>Activity diagram showing controller input handling, driving-mode selection, steering calculations, PWM limiting, and motor output.</em>
+</p>
 
 The main software loop follows this sequence:
 
@@ -265,7 +275,7 @@ battlebot-esp32-control/
 │       └── battlebot_controller.ino
 ├── documentation/
 │   ├── activity-diagram.png
-│   ├── protection-pcb-layout.png
+│   ├── bms-pcb-layout.png
 │   └── wiring-diagram.png
 ├── images/
 │   ├── electronics-setup.jpg
@@ -347,9 +357,11 @@ Before operating the complete robot:
 
 The electronics and software were initially tested using a breadboard setup before being integrated into the complete robot.
 
-![Electronics prototype](images/electronics-prototype.jpg)
-
-*Breadboard prototype used to test Bluetooth communication, motor direction, PWM control, steering, and battery-voltage sensing.*
+<p align="center">
+  <img src="images/electronics-prototype.jpg" alt="Electronics prototype" width="600">
+  <br>
+  <em>Breadboard prototype used to test Bluetooth communication, motor direction, PWM control, steering, and battery-voltage sensing.</em>
+</p>
 
 Testing covered:
 

@@ -284,7 +284,7 @@ PS4.begin("XX:XX:XX:XX:XX:XX");
 
 The complete robot was developed by a seven-person team of Mechanical Engineering students at NTNU.
 
-The embedded control software was developed collaboratively by **Mohamed Elwalid Fadul** and **[Teammate Name]**.
+The embedded control software was developed collaboratively by **Mohamed Elwalid Fadul** and **Malte vor de Esche**.
 
 My main contributions included:
 

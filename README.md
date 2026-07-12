@@ -6,6 +6,10 @@ The complete robot was developed by a team of seven Mechanical Engineering stude
 
 This repository focuses on the software and electronics portion of the project. The mechanical design, CAD development, manufacturing, and assembly process are presented separately in the project case study on my portfolio website.
 
+![Completed BattleBot](images/final-robot.jpg)
+
+*Completed tracked BattleBot developed for TMM4150 at NTNU.*
+
 ---
 
 ## Project Overview
@@ -27,9 +31,9 @@ The implemented control system supports:
 
 ## Electronics
 
-![Electronics setup](images/electronics-setup.jpg)
+![Integrated electronics](images/electronics-setup.jpg)
 
-*Integrated electronics setup containing the ESP32, motor driver, voltage converter, protection circuit, and power connections.*
+*Integrated electronics setup containing the ESP32, L298N motor driver, voltage converter, protection circuit, and power connections.*
 
 | Component | Function |
 |---|---|
@@ -46,9 +50,23 @@ The ESP32 was selected because it provides built-in Bluetooth communication and 
 
 ---
 
-## Power Protection and Voltage-Sensing PCB
+## Wiring
 
-![Power protection and voltage-sensing PCB](documentation/bms-pcb-layout.png)
+![Wiring diagram](documentation/wiring-diagram.png)
+
+*Simplified wiring diagram showing the connections between the battery, protection circuit, voltage converter, ESP32, motor driver, and motors.*
+
+The diagram shows how the main electrical components were connected during the project.
+
+The battery supplies the protection and sensing circuit. The voltage is then increased by the MT3608 boost converter before being supplied to the motor driver. The ESP32 sends direction and PWM signals to the L298N, while the two motors are controlled independently through the driver outputs.
+
+---
+
+## Protection and Voltage-Sensing PCB
+
+![Protection and voltage-sensing PCB](documentation/protection-pcb-layout.png)
+
+*PCB layout used for fuse integration, common ground distribution, external connections, and battery-voltage sensing.*
 
 The project included a custom PCB used as part of the battery protection and monitoring system.
 
@@ -74,38 +92,11 @@ The current software implementation reads and prints the raw ADC value. Conversi
 
 ---
 
-## System Architecture
-
-![System block diagram](documentation/system-block-diagram.png)
-
-The ESP32 receives wireless input from the DualShock 4 controller and calculates the required output for each track.
-
-It then sends direction and PWM signals to the L298N motor driver, which controls the direction and speed of the left and right motors independently.
-
-The main signal flow is:
-
-```text
-DualShock 4 Controller
-          |
-          | Bluetooth
-          v
-        ESP32
-          |
-          | PWM and direction signals
-          v
-    L298N Motor Driver
-       |           |
-       v           v
- Left Motor    Right Motor
-```
-
-The power system supplies the motor driver and ESP32 while the protection and sensing PCB provides fuse protection and battery-voltage measurement.
-
----
-
 ## Control Flow
 
-![Control software activity diagram](documentation/activity-diagram.png)
+![Software activity diagram](documentation/activity-diagram.png)
+
+*Activity diagram showing controller input handling, driving-mode selection, steering calculations, PWM limiting, and motor output.*
 
 The main software loop follows this sequence:
 
@@ -118,46 +109,6 @@ The main software loop follows this sequence:
 7. Limit the PWM output when crawl mode is enabled.
 8. Send the calculated direction and PWM values to both motors.
 9. Repeat the loop.
-
-A simplified representation of the program flow is shown below:
-
-```text
-Start
-  |
-  v
-Initialize pins, PWM and Bluetooth
-  |
-  v
-Set both motors to zero
-  |
-  v
-Read controller input and battery signal
-  |
-  v
-Is Cross pressed?
-  |                     |
- Yes                    No
-  |                     |
-  v                     v
-Calculate opposing     Read throttle
-track speeds           and steering
-  |                     |
-  |                     v
-  |                Is Circle pressed?
-  |                     |
-  |               Yes         No
-  |                |           |
-  |                v           |
-  |          Limit PWM output  |
-  |                |           |
-  +----------------+-----------+
-                   |
-                   v
-          Send commands to motors
-                   |
-                   v
-                Repeat
-```
 
 ---
 
@@ -314,9 +265,8 @@ battlebot-esp32-control/
 │       └── battlebot_controller.ino
 ├── documentation/
 │   ├── activity-diagram.png
-│   ├── bms-pcb-layout.png
-│   ├── wiring-diagram.png
-│   └── system-block-diagram.png
+│   ├── protection-pcb-layout.png
+│   └── wiring-diagram.png
 ├── images/
 │   ├── electronics-setup.jpg
 │   ├── electronics-prototype.jpg
@@ -326,8 +276,8 @@ battlebot-esp32-control/
 ```
 
 - `software/` contains the ESP32 source code.
-- `documentation/` contains the activity diagram, PCB layout, wiring diagram, and system block diagram.
-- `images/` contains photographs of the electronics and completed robot.
+- `documentation/` contains the activity diagram, PCB layout, and wiring diagram.
+- `images/` contains photographs of the electronics prototype, integrated electronics, and completed robot.
 - `README.md` provides an overview of the implementation.
 
 ---
@@ -399,7 +349,7 @@ The electronics and software were initially tested using a breadboard setup befo
 
 ![Electronics prototype](images/electronics-prototype.jpg)
 
-*Initial electronics prototype used to test the ESP32, motor driver, motors, voltage converter, battery connection, and controller input.*
+*Breadboard prototype used to test Bluetooth communication, motor direction, PWM control, steering, and battery-voltage sensing.*
 
 Testing covered:
 
@@ -417,8 +367,6 @@ Testing covered:
 Several code adjustments were made during testing to improve steering response and low-speed control.
 
 The final implementation provided wireless control of both tracks and included the planned driving modes. The control system was integrated into the completed robot and used during testing and competition.
-
-![Final robot](images/final-robot.jpg)
 
 ---
 

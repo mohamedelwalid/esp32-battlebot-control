@@ -235,8 +235,7 @@ battlebot-esp32-control/
 │   ├── electronics-prototype.jpg
 │   └── final-robot.jpg
 ├── software/
-│   └── battlebot_controller/
-│       └── battlebot_controller.ino
+│   └── battlebot_controller.ino
 └── README.md
 ```
 

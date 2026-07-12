@@ -225,9 +225,7 @@ The completed control system was integrated into the robot and used during testi
 
 ```text
 battlebot-esp32-control/
-├── software/
-│   └── battlebot_controller/
-│       └── battlebot_controller.ino
+
 ├── documentation/
 │   ├── activity-diagram.png
 │   ├── bms-pcb-layout.png
@@ -236,6 +234,9 @@ battlebot-esp32-control/
 │   ├── electronics-setup.jpg
 │   ├── electronics-prototype.jpg
 │   └── final-robot.jpg
+├── software/
+│   └── battlebot_controller/
+│       └── battlebot_controller.ino
 └── README.md
 ```
 

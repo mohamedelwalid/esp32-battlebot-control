@@ -9,7 +9,7 @@ This repository documents the software and electronics portion of the project. T
 <p align="center">
   <img src="images/final-robot.jpg" alt="Completed BattleBot" width="600">
   <br>
-  <em>Completed tracked BattleBot developed for TMM4150 at NTNU.</em>
+  <em>Final BattleBot prototype.</em>
 </p>
 
 ---

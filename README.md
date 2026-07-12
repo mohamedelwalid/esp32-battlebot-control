@@ -442,13 +442,18 @@ The robot was developed by a team of seven Mechanical Engineering students at NT
 
 The work was divided between mechanical design, manufacturing, electronics, and programming.
 
-My main responsibilities were within:
+The embedded control software was developed by **Mohamed Elwalid Fadul** and **Malte Vor Dem Esche**.
 
-- Electronics
+My main responsibilities included:
+
 - ESP32 programming
-- Controller implementation
+- DualShock 4 controller integration
 - Motor-control logic
-- Testing
+- Differential steering implementation
+- Turn-in-place and crawl modes
+- Electronics testing
 - System integration
+
+Other team members were primarily responsible for the mechanical design, CAD development, manufacturing, and assembly of the robot.
 
 This repository contains team project material and documents the software and electronics work completed during the course.

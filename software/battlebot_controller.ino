@@ -28,14 +28,12 @@ int stickValue = 0;
 int steeringValueLEFT = 0;
 int steeringValueRIGHT = 0;
 
-int i = 0;
-
-#define Measurment 100
-int voltArray[Measurment];
+#define MeasurementCount 100
+int voltArray[MeasurementCount];
 int voltIndex = 0;
-bool lowBatteryWarned = false;
-const int ADC_LOW  = n;
-const int ADC_HIGH = n;
+
+// Calibrate the voltage divider against a multimeter before enabling a
+// low-battery threshold. For now, the firmware reports the averaged raw ADC.
 
 
 void setup() {
@@ -61,12 +59,13 @@ void setup() {
 
   Serial.begin(115200); 
   //Serial.begin(9600);
-  PS4.begin("e8:9e:b4:d9:df:48");
+  // Replace this placeholder with the controller address before uploading.
+  PS4.begin("00:00:00:00:00:00");
 }
 
 void loop() 
 {
-  getMeasurment();
+  getMeasurement();
 
   if(PS4.Cross())
   {
@@ -209,36 +208,26 @@ void getSteering()
   }
 }
 
-void getMeasurment()
+void getMeasurement()
 {
   int rawdata = analogRead(SENSVN);     // Readin raw adc value from 0 to 4095
   voltArray[voltIndex] = rawdata;       // save in the array
   voltIndex++;                      // point to next posisiton
 
-  if (voltIndex >= Measurment)      // 100 measurment
+  if (voltIndex >= MeasurementCount)
   {
     voltIndex = 0;                  // Start ny measurment
 
     long sum = 0;                   // Sum all 100
-    for (int j = 0; j < Measurment; j++)
+    for (int j = 0; j < MeasurementCount; j++)
     {
       sum += voltArray[j];
     }
 
-    float avg = sum / (float)Measurment;  // Average of 100 measurments
+    float avg = sum / (float)MeasurementCount;
 
     Serial.print("Avg VN: ");
     Serial.println(avg);
 
-    // threshold for raw ADC
-    if (avg < ADC_LOW && !lowBatteryWarned)
-    {
-      lowBatteryWarned = true;    
-      PS4.setRumble(200, 255);      
-    }
-    else if (avg > ADC_HIGH)
-    {
-      lowBatteryWarned = false; 
-    }
   }
 }
